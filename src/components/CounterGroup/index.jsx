@@ -7,25 +7,35 @@ class CounterGroup extends React.Component {
         super(props);
         this.state = {
             size: 0,
-            totalNumber: 0
+            totalNumber: 0,
+            numbers: []
         };
     }
 
     handleResize = (event) => {
+        const size = event.target.value && parseInt(event.target.value) > 0 ? parseInt(event.target.value) : 0;
         this.setState({
-            size: event.target.value && parseInt(event.target.value) > 0 ? parseInt(event.target.value) : 0
+            size: size,
+            totalNumber: 0,
+            numbers: new Array(size).fill(0)
         });
     }
 
-    handleTotalNumberIncreased = () => {
+    handleIncrease = (key) => {
+        const numbersChanged = this.state.numbers
+        numbersChanged[key] = numbersChanged[key] + 1
         this.setState((preProps) => ({
-            totalNumber: preProps.totalNumber + 1
+            totalNumber: preProps.totalNumber + 1,
+            numbers: numbersChanged
         }))
     }
 
-    handleTotalNumberDecreased = () => {
+    handleDecrease = (key) => {
+        const numbersChanged = this.state.numbers
+        numbersChanged[key] = numbersChanged[key] - 1
         this.setState((preProps) => ({
-            totalNumber: preProps.totalNumber - 1
+            totalNumber: preProps.totalNumber - 1,
+            numbers: numbersChanged
         }))
     }
 
@@ -41,8 +51,8 @@ class CounterGroup extends React.Component {
                     <label>Total Number: {this.state.totalNumber}</label>
                 </div>
                 {
-                    counters.map(key => <Counter onIncrease={this.handleTotalNumberIncreased} 
-                        onDecrease={this.handleTotalNumberDecreased} key={key} />)
+                    counters.map(key => <Counter onIncrease={() => this.handleIncrease(key)} 
+                        onDecrease={() => this.handleDecrease(key)} key={key} value={this.state.numbers[key]} />)
                 }
             </div>
         );
