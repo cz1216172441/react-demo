@@ -6,7 +6,8 @@ class CounterGroup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            size: 0
+            size: 0,
+            totalNumber: 0
         };
     }
 
@@ -14,6 +15,18 @@ class CounterGroup extends React.Component {
         this.setState({
             size: event.target.value && parseInt(event.target.value) > 0 ? parseInt(event.target.value) : 0
         });
+    }
+
+    handleTotalNumberIncreased = () => {
+        this.setState((preProps) => ({
+            totalNumber: preProps.totalNumber + 1
+        }))
+    }
+
+    handleTotalNumberDecreased = () => {
+        this.setState((preProps) => ({
+            totalNumber: preProps.totalNumber - 1
+        }))
     }
 
     render() {
@@ -24,8 +37,12 @@ class CounterGroup extends React.Component {
                     <label>Group Size: </label>
                     <input onBlur={this.handleResize} type="number" min="0"/>
                 </div>
+                <div>
+                    <label>Total Number: {this.state.totalNumber}</label>
+                </div>
                 {
-                    counters.map(key => <Counter key={key} />)
+                    counters.map(key => <Counter onIncrease={this.handleTotalNumberIncreased} 
+                        onDecrease={this.handleTotalNumberDecreased} key={key} />)
                 }
             </div>
         );
