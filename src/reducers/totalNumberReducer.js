@@ -4,13 +4,15 @@ const totalNumberReducer = (state = initialStatus, action) => {
   switch (action.type) {
     case "TOTAL_NUMBER_INCREASE":
       return {
-        ...state,
         totalNumber: state.totalNumber + 1
       };
     case "TOTAL_NUMBER_DECREASE":
       return {
-        ...state,
-        totalNumber: state.totalNumber + 1
+        totalNumber: state.totalNumber - 1
+      };
+    case "TOTAL_NUMBER_RESET":
+      return {
+        totalNumber: 0
       };
     default:
       return state;

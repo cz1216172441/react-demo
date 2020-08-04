@@ -1,14 +1,18 @@
 import React from 'react'
 import './index.css'
+import { connect } from 'react-redux'
+import { increaseTotalNumber, decreaseTotalNumber } from "../../actions";
 
 class Counter extends React.Component {
 
     increase = () => {
         this.props.onIncrease();
+        this.props.increaseTotalNumber();
     }
 
     decrease = () => {
         this.props.onDecrease();
+        this.props.decreaseTotalNumber();
     }
 
     render() {
@@ -23,4 +27,4 @@ class Counter extends React.Component {
 
 }
 
-export default Counter;
+export default connect(null, { increaseTotalNumber, decreaseTotalNumber })(Counter);
