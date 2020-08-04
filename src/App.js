@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-
-import CounterGroup from './components/CounterGroup/index'
+import CounterGroup from './components/CounterGroup'
 
 function App() {
   return (

@@ -20,6 +20,7 @@ class Counter extends React.Component {
         this.setState((preProps)=> ({
             value: preProps.value + 1
         }))
+        console.log(this.props.increaseTotalNumber())
         this.props.increaseTotalNumber();
     }
 
@@ -41,6 +42,5 @@ class Counter extends React.Component {
     }
 
 }
-
 
 export default connect(null, { increaseTotalNumber, decreaseTotalNumber, resetTotalNumber })(Counter);

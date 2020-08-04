@@ -27,7 +27,7 @@ class CounterGroup extends React.Component {
                     <input onBlur={this.handleResize} type="number" min="0" />
                 </div>
                 <div>
-                    <label>Total Number: {this.props.totalNumber}</label>
+                    <label>Total Number: {this.props.sum}</label>
                 </div>
                 {
                     counters.map(key => <Counter key={key} />)
@@ -39,7 +39,7 @@ class CounterGroup extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { totalNumber: state.totalNumberReducer.totalNumber };
+    return { sum: state.counter.sum };
 }
 
-export default connect(mapStateToProps, null)(CounterGroup)
+export default connect(mapStateToProps)(CounterGroup)
