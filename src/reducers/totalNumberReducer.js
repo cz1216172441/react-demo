@@ -12,7 +12,7 @@ const totalNumberReducer = (state = initialStatus, action) => {
       };
     case "TOTAL_NUMBER_RESET":
       return {
-        totalNumber: 0
+        totalNumber: state.totalNumber - action.number
       };
     default:
       return state;

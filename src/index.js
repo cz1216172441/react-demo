@@ -5,9 +5,10 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import totalNumberReducer from './reducers/totalNumberReducer';
 
-const store = createStore(totalNumberReducer);
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
