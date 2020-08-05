@@ -13,7 +13,6 @@ class Counter extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log(this.state.value);
         this.props.resetTotalNumber(this.state.value);
     }
 
