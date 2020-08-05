@@ -13,6 +13,7 @@ class Counter extends React.Component {
     }
 
     componentWillUnmount() {
+        console.log(this.state.value);
         this.props.resetTotalNumber(this.state.value);
     }
 
@@ -20,7 +21,6 @@ class Counter extends React.Component {
         this.setState((preProps)=> ({
             value: preProps.value + 1
         }))
-        console.log(this.props.increaseTotalNumber())
         this.props.increaseTotalNumber();
     }
 
